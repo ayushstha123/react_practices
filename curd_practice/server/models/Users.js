@@ -4,7 +4,7 @@ const UserSchema=new mongoose.Schema({
     name:String,
     email:String,
     age:Number,
-    phoneno:Number,
+    phone:Number,
 });
 
 const userModel=mongoose.model("users",UserSchema)

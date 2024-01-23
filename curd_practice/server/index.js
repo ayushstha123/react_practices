@@ -8,6 +8,10 @@ app.use(cors());
 app.use(express.json());
 const PORT = 3000;
 
+app.get("/",(req,res)=>{
+    userModel.find({}).then((users)=>res.json(users)).catch((err)=>console.log(err))
+})
+
 app.post("/createUsers",(req,res)=>{
 userModel.create(req.body).then((users)=>{res.json(users)}).catch((err)=>{res.json(err)})
 })

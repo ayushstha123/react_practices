@@ -1,18 +1,19 @@
-import React, { useState } from 'react'
+import React, {useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const CreateUser = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [age, setAge] = useState('');
-
+  const navigate=useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
-
     axios.post('http://localhost:3000/createUsers', { name, email, phone, age })
       .then(result => console.log(result))
       .catch(err => console.log(err));
+      navigate('/');
   }
 
   return (
@@ -21,7 +22,6 @@ const CreateUser = () => {
   <div className="sm:mx-auto sm:w-full sm:max-w-sm">
     <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Add a New User</h2>
   </div>
-
   <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
