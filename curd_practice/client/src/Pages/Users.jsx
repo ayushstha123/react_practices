@@ -15,6 +15,17 @@ const Users = () => {
       });
   }, []); // Added an empty dependency array for useEffect
 
+  const handleDelete=(id)=>{
+    axios.delete("http://localhost:3000/deleteUser/"+id)
+    .then((result)=>{
+      const updatedUser=users.filter((user)=>user._id !==id);
+      setUsers(updatedUser);
+      console.log(result);
+
+    })
+    .catch((err)=>console.log(err));
+  }
+
   return (
     <div>
       <div className="relative overflow-x-auto">
@@ -53,7 +64,7 @@ const Users = () => {
                   </td>
                   <td className="px-6 py-4 m-5">
                     <Link className='bg-green-400 m-5 text-black p-2' to={`/update/${user._id}`}>Update</Link>
-                    <button className='bg-red-400 m-5 text-black p-2'>Delete</button>
+                    <button className='bg-red-400 m-5 text-black p-2' onClick={()=>{handleDelete(user._id)}}>Delete</button>
 
                   </td >
                 </tr>
