@@ -1,8 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
+import axios from 'axios'
 
 const CreateUser = () => {
-
+    const [name,setName]=useState('')
+    const [email,setEmail]=useState('')
+    const [phone,setPhone]=useState('')
+    const [age,setAge]=useState('')
     
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        axios.post('http://localhost:3000/createUser', { name, email, phone, age })
+        .then((result)=>console.log(result))
+        .catch((err)=>console.log(err));
+    }
+
   return (
     <div>
         <>
