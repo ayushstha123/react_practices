@@ -1,23 +1,25 @@
 import React, { useState } from 'react'
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const CreateUser = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [age, setAge] = useState('');
-  const navigate = useNavigate();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    axios.post('http://localhost:3000/createUsers', { name, email, phone, age })
-      .then(result => console.log(result))
-      .catch(err => console.log(err));
-    navigate('/');
-  }
+    const [name,setName]=useState('')
+    const [email,setEmail]=useState('')
+    const [phone,setPhone]=useState('')
+    const [age,setAge]=useState('')
+    const navigate=useNavigate()
+    const handleSubmit=(e)=>{
+      
+        e.preventDefault();
+        axios.post('http://localhost:3000/createUser', { name, email, phone, age })
+        .then((result)=>console.log(result))
+        .catch((err)=>console.log(err));
+        navigate('/');
+    }
 
   return (
-    <>
+    <div>
+        <>
       <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Add a New User</h2>
@@ -68,6 +70,7 @@ const CreateUser = () => {
         </div>
       </div>
     </>
+    </div>
   )
 }
 

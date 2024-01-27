@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Route,Router,BrowserRouter, Routes } from 'react-router-dom'
 import './App.css'
 import Home from './pages/Home'
@@ -11,7 +10,7 @@ function App() {
 <Routes>
   <Route path='/' element={<Home/>}></Route>
   <Route path='/createUser' element={<CreateUser/>}></Route>
-  <Route path='/update' element={<UpdateUser/>}></Route>
+  <Route path='/update/:id' element={<UpdateUser/>}></Route>
 </Routes>
 </BrowserRouter>
   )
